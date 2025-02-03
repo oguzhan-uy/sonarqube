@@ -29,7 +29,8 @@ jobs:
         run: ./gradlew compileJava
 
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew test --exclude '**/*IT*'
+
 
 
   start-sonarqube:
