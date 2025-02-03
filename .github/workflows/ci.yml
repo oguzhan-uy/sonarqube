@@ -26,7 +26,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run unit tests
-        run: ./gradlew test --exclude '**/*IT*'
+        run: ./gradlew test
 
 
   start-sonarqube:
