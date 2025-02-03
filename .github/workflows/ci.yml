@@ -29,7 +29,7 @@ jobs:
         run: ./gradlew compileJava
 
       - name: Run unit tests
-        run: ./gradlew test --exclude '**/*IT*'
+        run: ./gradlew test
 
 
 
