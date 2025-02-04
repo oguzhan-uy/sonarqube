@@ -38,6 +38,17 @@ public class ProjectDto extends EntityDto {
   private long createdAt;
   private long updatedAt;
 
+  // Ajout de la nouvelle fonctionnalité
+  private int descriptionLength;
+
+  public int getDescriptionLength() {
+    return descriptionLength;
+  }
+
+  public void setDescriptionLength(int descriptionLength) {
+    this.descriptionLength = descriptionLength;
+  }
+
   public long getCreatedAt() {
     return createdAt;
   }
@@ -85,8 +96,8 @@ public class ProjectDto extends EntityDto {
 
   public ProjectDto setTags(List<String> tags) {
     setTagsString(tags.stream()
-      .filter(t -> !t.isEmpty())
-      .collect(Collectors.joining(TAGS_SEPARATOR)));
+            .filter(t -> !t.isEmpty())
+            .collect(Collectors.joining(TAGS_SEPARATOR)));
     return this;
   }
 
@@ -110,6 +121,13 @@ public class ProjectDto extends EntityDto {
 
   public ProjectDto setDescription(@Nullable String description) {
     this.description = description;
+
+    // On calcule automatiquement la longueur de la description
+    if (description != null) {
+      setDescriptionLength(description.length());
+    } else {
+      setDescriptionLength(0);
+    }
     return this;
   }
 
