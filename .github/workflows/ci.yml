@@ -65,3 +65,8 @@ jobs:
         run: |
           docker pull sonarqube
           docker run -d --name sonarqube -p 9000:9000 sonarqube
+
+      - name: Check if SonarQube is running
+        run: |
+          sleep 10
+          curl -f http://localhost:9000 || exit 1
